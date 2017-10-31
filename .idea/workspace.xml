@@ -479,7 +479,7 @@
       <workItem from="1501224976251" duration="14472000" />
       <workItem from="1501484567005" duration="730000" />
       <workItem from="1507627537972" duration="108000" />
-      <workItem from="1509443139991" duration="10661000" />
+      <workItem from="1509443139991" duration="10677000" />
     </task>
     <task id="LOCAL-00001" summary="search by category : message if no result&#10;Save the messages of the potential buyers">
       <created>1509461910617</created>
@@ -495,14 +495,22 @@
       <option name="project" value="LOCAL" />
       <updated>1509463221163</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="search by category : message if no result&#10;Save the messages of the potential buyers">
+      <created>1509463937176</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1509463937176</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118913000" />
+    <option name="totallyTimeSpent" value="118929000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="98" y="13" width="1696" height="1026" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21088019" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
