@@ -1,0 +1,76 @@
+{%  extends "@AnnoncesMain/n2.html.twig" %}
+{% block n3 %}
+    {% block navig %}
+        <!-- Template menu principal -->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ path('annonces_main_homepage') }}">Mes Bonnes Annonces</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="{{ path('annonces_main_homepage') }}">Annonces</a></li>
+                        <li><a href="{{ path('annonces_main_creation') }}">Poster une annonce</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catégories <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                {%  for categorie in categories %}
+                                    <li><a href="{{ path('annonces_main_liste_par_categorie',{'id': categorie.id}) }}">{{ categorie.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a class="btn btn-small" href="#">Se connecter</a>
+                        </li>
+                        <li>
+                            <a href="#">S'inscrire</a>
+                        </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav><!-- Fin Template menu principal -->
+    {% endblock navig %}
+    <!-- Template Niveau 3 -->
+    <div class="row">
+        <div class="home">
+            {#<div class="titre_home">#}
+            <h1 class="titre_home"> Les annonces </h1>
+            <hr>
+            {#</div>#}
+        </div>
+            {#<div class="form-group">#}
+    <!-- Boucle for -->
+    {%  for annonce in annonces %}
+        <div class="row">
+            <div class="col-xs-6 col-md-4 col-lg-6 creat1">
+            {#{{ dump(annonce.pictures[0].path) }}#}
+                <div class="annonce">
+                    <p>{{ annonce.title }}</p>
+                    <span class="date_annonce">Annonce postée le : {{ annonce.createdAt | date('d-m-Y')  }}</span>
+                </div>
+                <div class="col-xs-4 ">
+                    <a class="image_200" href="{{ path('annonces_main_details', {'id': annonce.id}) }}">
+                        <img  src="{{ asset(annonce.pictures[0].path) }}" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="col-xs-6 col-md-4 col-lg-6 creat2">
+                    <p id="descript_xs">{{ annonce.description }}</p>
+                <div class="valid">
+                    <a class="btn btn-primary pull-right" href="{{ path('annonces_main_details', {'id': annonce.id}) }}">Détails</a>
+                </div>
+            </div>
+        </div>
+        <hr>
+    {% endfor %}
+        <!-- Fin boucle For -->
+    </div><!-- div.row -->
+
+{% endblock n3 %}

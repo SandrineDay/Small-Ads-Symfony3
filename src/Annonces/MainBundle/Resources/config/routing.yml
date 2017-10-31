@@ -1,0 +1,25 @@
+annonces_main_homepage:
+    path:     /
+    defaults: { _controller: AnnoncesMainBundle:Default:index }
+
+annonces_main_details:
+    path:     /details/{id}
+    defaults: { _controller: AnnoncesMainBundle:Default:details }
+    requirements:
+              id: \d+
+
+annonces_main_creation:
+    path:     /creation
+    defaults: { _controller: AnnoncesMainBundle:Default:creation }
+
+annonces_main_liste_par_categorie:
+    path:     /category/{id}
+    defaults: { _controller: AnnoncesMainBundle:Default:listeAnnoncesParCategorie }
+    requirements:
+             id: \d+
+
+annonces_main_reponse:
+    path:     /reponse/{id}
+    defaults: { _controller: AnnoncesMainBundle:Default:reponse }
+    requirements:
+              id: \d+

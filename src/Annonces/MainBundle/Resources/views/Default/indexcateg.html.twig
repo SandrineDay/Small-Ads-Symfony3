@@ -1,0 +1,28 @@
+{%  extends "@AnnoncesMain/n2.html.twig" %}
+{% block n3 %}
+    {#redéfinition#}
+    <!-- Template Niveau 3 -->
+    <div class="container">
+        <div class="row annonce_detail">
+            {%  for annonce in annonces %}
+                {#{{ dump(annonce.pictures[0].path) }}#}
+                <div class="row annonce">
+                    <h1>{{ annonce.title }}</h1>
+                    <p class="date_annonce">Annonce postée le : {{ annonce.createdAt | date('d-m-Y H:i:s')  }}</p>
+                    <div class="col-xs-4 picture">
+                        <a href="{{ path('annonces_main_details', {'id': annonce.id}) }}">
+                            {#<img src="{{ asset(annonce.pictures[0].path) }}" alt="">#}
+                        </a>
+                    </div>
+                    <div class="col-xs-offset-1 col-xs-7 content">
+                        <br>
+                        <p>{{ annonce.description }}</p>
+                        <br>
+                        <a class="btn btn-primary" href="{{ path('annonces_main_details', {'id': annonce.id}) }}">Détails</a>
+                    </div>
+                </div><!-- div.row -->
+            {% endfor %}
+        </div><!-- row -->
+
+    </div><!-- /.container -->
+{% endblock n3 %}

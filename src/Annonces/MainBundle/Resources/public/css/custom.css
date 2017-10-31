@@ -1,0 +1,101 @@
+body {
+    padding-top: 50px;
+    background-color: rgba(249, 195, 16, 0.35);
+    height: 600px;
+}
+
+.category {
+    margin-top:10px;
+    margin-left: 10px;
+    font-size: larger;
+    border: 1px solid brown;
+}
+
+hr {
+    border : 1px solid rgba(176, 58, 17, 0.69);
+}
+
+a {
+    color : black;
+}
+
+a:hover {
+    style:none;
+    text-decoration: none;
+    color: maroon;
+}
+
+.annonce p{
+    font-size: larger;
+    font-weight: bold;
+}
+
+.annonce_detail {
+    margin-top: 20px;
+    font-size: larger;
+    text-align: left;
+    display: flex;
+    justify-content: space-around;
+}
+
+.annonce_detail img {
+    border : 3px solid rgba(176, 58, 17, 0.69);
+}
+
+.content {
+    text-align : left;
+}
+
+span.date_annonce{
+    text-align: left;
+}
+
+h1.titre_home {
+    text-align: center;
+}
+
+.creat1 .creat2 .annonce{
+    margin-top: 20px;
+}
+
+.creat1{
+    float: left;
+    /*background-color: red;*/
+}
+.creat2{
+    float: right;
+    /*background-color: #2aabd2;*/
+}
+
+.milieu {
+
+}
+
+.titre-reponse {
+    color: rgba(176, 58, 17, 0.69);
+    font-weight: bold;
+    font-style: italic;
+}
+
+div.col-lg-6.image_350.vignette img:not(:first-child) {
+    height:100px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.image_350 img{
+    max-width: 500px;
+    /*height: 350px;*/
+}
+
+.image_200 img{
+    height: 200px;
+}
+.image_100 img{
+    height: 100px;
+}
+
+#form_description #form_message{
+    height: 300px;
+    background-color: greenyellow;
+}

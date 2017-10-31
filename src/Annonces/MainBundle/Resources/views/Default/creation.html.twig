@@ -1,0 +1,100 @@
+{% extends "@AnnoncesMain/n2.html.twig" %}
+{%  if form is defined %}
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+{% endif %}
+{% block n3 %}
+    {% block navig %}
+    <!-- Template menu principal -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('annonces_main_homepage') }}">Mes Bonnes Annonces</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="{{ path('annonces_main_homepage') }}">Annonces</a></li>
+                    {#<li><a href="{{ path('annonces_main_creation') }}">Poster une annonce</a></li>#}
+                    {#<li class="dropdown">#}
+                        {#<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catégories <span class="caret"></span></a>#}
+                        {#<ul class="dropdown-menu">#}
+                            {#{%  for categorie in categories %}#}
+                                {#<li><a href="{{ path('annonces_main_liste_par_categorie',{'id': categorie.id}) }}">{{ categorie.name }}</a></li>#}
+                            {#{% endfor %}#}
+                        {#</ul>#}
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="btn btn-small" href="#">Se connecter</a>
+                    </li>
+                    <li>
+                        <a href="#">S'inscrire</a>
+                    </li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav><!-- Fin Template menu principal -->
+    {% endblock navig %}
+
+    <!-- Template Niveau 3 -->
+    <div class="row">
+        <div class="home">
+            {#<div class="titre_home">#}
+                <h1 class="titre_home"> Nouvelle annonce </h1>
+            <hr>
+            {#</div>#}
+        </div>
+
+        {{ form_start(form) }}
+
+        <div class="col-xs-6 col-md-4 col-lg-6 creat1">
+            <div class="form-group">
+                <span class="label-lg">{{ form_label(form.title)}}</span>
+                <span class="help-block">Saisissez le titre de l'annonce.</span>
+                {{ form_errors(form.title) }}
+                {{ form_widget(form.title) }}
+                {#<span class="help-block">Saisissez le titre de l'annonce.</span>#}
+            </div>
+            <div class="form-group">
+                <span class="label-lg ">{{ form_label(form.description)}}</span>
+                <span class="help-block">Entrez une description.</span>
+                {{ form_errors(form.description) }}
+                {{ form_widget(form.description) }}
+            </div>
+            <div class="form-group">
+                <span class="label-lg">{{ form_label(form.price) }}</span>
+                <span class="help-block">Indiquez le prix.</span>
+                {{ form_errors(form.price) }}
+                {{ form_widget(form.price) }}
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-4 col-lg-6 creat2">
+            <div class="form-group">
+                <span class="label-lg">{{ form_label(form.category)}}</span>
+                <span class="help-block">Choisissez la catégorie de votre annonce parmi :</span>
+                {{ form_errors(form.category) }}
+                {{ form_widget(form.category) }}
+            </div>
+            <div class="form-group">
+                <span class="label-lg">{{ form_label(form.pictures)}}</span>
+                {#<span class="help-block">Téléchargez une photo.</span>#}
+                {{ form_errors(form.pictures) }}
+                {{ form_widget(form.pictures) }}
+            </div>
+        </div>
+
+
+            {{ form_end(form) }}
+
+
+
+        <!-- Fin Template Formulaire -->
+        <!-- Si le visiteur n'est pas identifié -->
+        <!-- <p>Merci de vous<a href="#"> indentifier</a>  pour poster vos dessins !</p> -->
+    </div><!-- Fin Template Niveau 3 -->
+{% endblock n3 %}
