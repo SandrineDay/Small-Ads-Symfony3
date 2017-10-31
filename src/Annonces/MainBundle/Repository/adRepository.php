@@ -10,32 +10,33 @@ namespace Annonces\MainBundle\Repository;
  */
 class adRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findAllAnnonces2(){
-        return $this->getEntityManager()
-            ->createQuery(
-                'SELECT a FROM AnnoncesMainBundle:ad a ORDER BY a.createdAt DESC'
-            )
-            ->getResult();
-    }
-
-    public function findAllAnnonces3(){
-//        select p.* from ad a INNER JOIN picture p where p.id_ad=a.id AND p.main=1
-
-        return $this->getEntityManager()
-            ->createQuery(
-                'SELECT a, p FROM AnnoncesMainBundle:ad a INNER JOIN AnnoncesMainBundle:picture p WHERE p.ad=a.id 
-AND p.main=1 
-ORDER BY a.createdAt DESC'
-            )
-            ->getResult();
-    }
+//    public function findAllAnnonces2(){
+//        return $this->getEntityManager()
+//            ->createQuery(
+//                'SELECT a FROM AnnoncesMainBundle:ad a ORDER BY a.createdAt DESC'
+//            )
+//            ->getResult();
+//    }
+//
+//    public function findAllAnnonces3(){
+////        select p.* from ad a INNER JOIN picture p where p.id_ad=a.id AND p.main=1
+//
+//        return $this->getEntityManager()
+//            ->createQuery(
+//                'SELECT a, p FROM AnnoncesMainBundle:ad a INNER JOIN AnnoncesMainBundle:picture p WHERE p.ad=a.id
+//AND p.main=1
+//ORDER BY a.createdAt DESC'
+//            )
+//            ->getResult();
+//    }
 
     public function findAllAnnonces(){
-//        select p.* from ad a INNER JOIN picture p where p.id_ad=a.id AND p.main=1
+//        select p.* from ad a INNER JOIN picture p where p.id_ad=a.id AND p.main=1 ARDER BY a.createdAt
      $request=$this->createQueryBuilder('a')
          ->join('a.pictures','p')
          ->where('p.main=1')
-         ->addSelect('a,p');
+         ->addSelect('a,p')
+         ->orderBy('a.createdAt', 'DESC');
      return $request->getQuery()->getResult();
     }
 
@@ -44,7 +45,8 @@ ORDER BY a.createdAt DESC'
             ->innerJoin('a.category', 'c')
             ->where('c.id = :cat')
             ->setParameter('cat', $category)
-            ->addSelect('a','c');
+            ->addSelect('a','c')
+            ->orderBy('a.createdAt', 'DESC');
         return $q->getQuery()->getResult();
     }
 }

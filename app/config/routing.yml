@@ -1,4 +1,11 @@
+annonces_user:
+    resource: "@AnnoncesUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 annonces_main:
     resource: "@AnnoncesMainBundle/Resources/config/routing.yml"
     prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
