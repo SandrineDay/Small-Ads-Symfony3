@@ -40,13 +40,14 @@
     <!-- Template Niveau 3 -->
     <div class="row">
         <div class="home">
-            {#<div class="titre_home">#}
             <h1 class="titre_home"> Les annonces </h1>
             <hr>
-            {#</div>#}
         </div>
-            {#<div class="form-group">#}
-    <!-- Boucle for -->
+
+    {% if annonces is empty %}
+        <h3>il n'y a pas d'annonces dans cette catégorie</h3>
+    {% endif %}
+        <!-- Boucle for -->
     {%  for annonce in annonces %}
         <div class="row">
             <div class="col-xs-6 col-md-4 col-lg-6 creat1">
