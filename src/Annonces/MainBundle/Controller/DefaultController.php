@@ -173,4 +173,20 @@ class DefaultController extends Controller
         return $this->render('@AnnoncesMain/Default/details.html.twig',$datas);
     }
 
+    private function checkAuthorization($instance){
+        // Return true si le user est admin
+        if ($this->get('security.authorization_checker')
+            ->isGranted('ROLE_ADMIN')){
+            return true;
+        }
+        // Return true si le user est proprio
+        elseif ($this->getUser() == $instance){
+            return true;
+        }
+        // Return false vers uri si le user n'est pas autorisé
+        else {
+            return false;
+        }
+
+    }
 }
