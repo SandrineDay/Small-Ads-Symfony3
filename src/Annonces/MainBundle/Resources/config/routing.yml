@@ -23,3 +23,7 @@ annonces_main_reponse:
     defaults: { _controller: AnnoncesMainBundle:Default:reponse }
     requirements:
               id: \d+
+
+annonces_main_espaceperso:
+    path:     /espaceperso
+    defaults: { _controller: AnnoncesMainBundle:Default:espaceperso }

@@ -8,6 +8,6 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('AnnoncesUserBundle:Default:index.html.twig');
+        return $this->render('AnnoncesMainBundle:Default:espaceperso.html.twig');
     }
 }

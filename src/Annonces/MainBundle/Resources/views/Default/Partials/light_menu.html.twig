@@ -13,17 +13,10 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="{{ path('annonces_main_homepage') }}">Annonces</a></li>
             </ul>
-            {#<ul class="nav navbar-nav navbar-right">#}
-                {#<li>#}
-                    {#<a class="btn btn-small" href="#">Se connecter</a>#}
-                {#</li>#}
-                {#<li>#}
-                    {#<a href="#">S'inscrire</a>#}
-                {#</li>#}
-            {#</ul>#}
+
             {% if is_granted('ROLE_USER') %}
                 <p class="navbar-text navbar-right">
-                    <span class="text-primary">Bienvenue {{ app.user.username }}</span>
+                    <span class="text-primary">Bienvenue {{ app.user.firstname }} {{ app.user.username }}</span>
                     <a class="disconnect" href="{{ path('fos_user_security_logout') }}">Quitter</a>
                 </p>
             {% else %}

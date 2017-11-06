@@ -173,6 +173,10 @@ class DefaultController extends Controller
         return $this->render('@AnnoncesMain/Default/details.html.twig',$datas);
     }
 
+    public function espacepersoAction(){
+        return $this->render('AnnoncesMainBundle:Default:espaceperso.html.twig');
+    }
+
     private function checkAuthorization($instance){
         // Return true si le user est admin
         if ($this->get('security.authorization_checker')

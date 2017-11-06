@@ -2,3 +2,8 @@ services:
 #    annonces_user.example:
 #        class: Annonces\UserBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+    annonces_user.registration_confirm:
+        class: Annonces\UserBundle\EventListener\RegistrationConfirmListener
+        arguments: ['@router']
+        tags:
+            - { name: kernel.event_subscriber }
