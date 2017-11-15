@@ -49,4 +49,13 @@ class adRepository extends \Doctrine\ORM\EntityRepository
             ->orderBy('a.createdAt', 'DESC');
         return $q->getQuery()->getResult();
     }
+
+    public function findAllAnnoncesByAuthor($user){
+        $q = $this->createQueryBuilder('a')
+            ->innerJoin('a.author', 'au')
+            ->where('au.id = :id')
+            ->setParameter('id', $user)
+            ->addSelect('a','au');
+        return $q->getQuery()->getResult();
+    }
 }

@@ -30,50 +30,52 @@
 
         <div class="col-lg-offset-2 milieu"></div>
 
-        <div class="col-lg-4">
-            <div>
-                <h4 class="titre-reponse">Intéressé ? Laissez-nous un message :</h4>
-            </div>
-        {{ form_start(form) }}
+        {% if not(is_granted("ROLE_USER")) %}
+            <div class="col-lg-4">
+                <div>
+                    <h4 class="titre-reponse">Intéressé ? Laissez-nous un message :</h4>
+                </div>
+            {{ form_start(form) }}
 
-        {#<div class="reponse col-lg-4 creat1">#}
-        {#<div class="col-lg-4">#}
-            {#<div class="col-xs-6 col-md-4 col-lg-6 creat1">#}
-                <div class="form-group">
-                    <span class="label-lg">{{ form_label(form.email)}}</span>
-                    <span class="help-block">Saisissez votre adresse email.</span>
-                    {{ form_errors(form.email) }}
-                    {{ form_widget(form.email) }}
-                    {#<span class="help-block">Saisissez le titre de l'annonce.</span>#}
-                </div>
-                <div class="form-group">
-                    <span class="label-lg">{{ form_label(form.name)}}</span>
-                    <span class="help-block">Entrez votre nom.</span>
-                    {{ form_errors(form.name) }}
-                    {{ form_widget(form.name) }}
-                </div>
-                <div class="form-group">
-                    <span class="label-lg">{{ form_label(form.firstname)}}</span>
-                    <span class="help-block">Entrez votre prénom.</span>
-                    {{ form_errors(form.firstname) }}
-                    {{ form_widget(form.firstname) }}
-                </div>
-                <div class="form-group">
-                    <span class="label-lg">{{ form_label(form.phone) }}</span>
-                    <span class="help-block">Indiquez votre n° de téléphone.</span>
-                    {{ form_errors(form.phone) }}
-                    {{ form_widget(form.phone) }}
-                </div>
-                <div class="form-group">
-                    <span class="label-lg">{{ form_label(form.message) }}</span>
-                    <span class="help-block">Votre message.</span>
-                    {{ form_errors(form.message) }}
-                    {{ form_widget(form.message) }}
-                </div>
-            {#</div>#}
-            {{ form_end(form) }}
-            {#<a class="btn btn-primary" href="">Répondre à l'annonce</a>#}
-        </div>
+            {#<div class="reponse col-lg-4 creat1">#}
+            {#<div class="col-lg-4">#}
+                {#<div class="col-xs-6 col-md-4 col-lg-6 creat1">#}
+                    <div class="form-group">
+                        <span class="label-lg">{{ form_label(form.email)}}</span>
+                        <span class="help-block">Saisissez votre adresse email.</span>
+                        {{ form_errors(form.email) }}
+                        {{ form_widget(form.email) }}
+                        {#<span class="help-block">Saisissez le titre de l'annonce.</span>#}
+                    </div>
+                    <div class="form-group">
+                        <span class="label-lg">{{ form_label(form.name)}}</span>
+                        <span class="help-block">Entrez votre nom.</span>
+                        {{ form_errors(form.name) }}
+                        {{ form_widget(form.name) }}
+                    </div>
+                    <div class="form-group">
+                        <span class="label-lg">{{ form_label(form.firstname)}}</span>
+                        <span class="help-block">Entrez votre prénom.</span>
+                        {{ form_errors(form.firstname) }}
+                        {{ form_widget(form.firstname) }}
+                    </div>
+                    <div class="form-group">
+                        <span class="label-lg">{{ form_label(form.phone) }}</span>
+                        <span class="help-block">Indiquez votre n° de téléphone.</span>
+                        {{ form_errors(form.phone) }}
+                        {{ form_widget(form.phone) }}
+                    </div>
+                    <div class="form-group">
+                        <span class="label-lg">{{ form_label(form.message) }}</span>
+                        <span class="help-block">Votre message.</span>
+                        {{ form_errors(form.message) }}
+                        {{ form_widget(form.message) }}
+                    </div>
+                {#</div>#}
+                {{ form_end(form) }}
+                {#<a class="btn btn-primary" href="">Répondre à l'annonce</a>#}
+            </div>
+        {% endif %}
     </div>
 
 </div><!-- row -->

@@ -8,11 +8,35 @@
 <!-- Template Niveau 3 -->
 <div class="row">
     <div class="home">
-        <h1 class="titre_home"> Les annonces </h1>
+        <h1 class="titre_home"> Vos annonces </h1>
         <hr>
     </div>
 </div>
 
 <h2>Espace Perso</h2>
+
+    {%  for ad in ads %}
+        <div class="row">
+            <div class="col-xs-6 col-md-4 col-lg-6 creat1">
+                <div class="annonce">
+                    <p>{{ ad.title }}</p>
+                    <span class="date_annonce">Annonce postée le : {{ ad.createdAt | date('d-m-Y')  }}</span>
+                </div>
+                <div class="col-xs-4 ">
+                    <a class="image_200" href="{{ path('annonces_main_details', {'id': ad.id}) }}">
+                        <img  src="{{ asset(ad.pictures[0].path) }}" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="col-xs-6 col-md-4 col-lg-6 creat2">
+                <p id="descript_xs">{{ ad.description }}</p>
+                <div class="valid">
+                    <a class="btn btn-primary pull-right" href="{{ path('annonces_main_details', {'id': ad.id}) }}">En
+                        savoir plus</a>
+                </div>
+            </div>
+        </div>
+        <hr>
+    {% endfor %}
 
 {% endblock n3 %}

@@ -3,6 +3,7 @@
 namespace Annonces\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Annonces\UserBundle\Entity\User;
 
 /**
  * ad
@@ -78,6 +79,13 @@ class ad
      * @ORM\Column(name="price", type="float")
      */
     private $price;
+
+    /**
+     * Plusieurs Annonces (Many) pour (To) Un(One) User
+     * @ORM\ManyToOne(targetEntity="Annonces\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="id_user",referencedColumnName="id",onDelete="CASCADE")
+     */
+    private $author;
 
     /**
      * Get id
@@ -306,13 +314,14 @@ class ad
     /**
      * Constructor
      */
-    public function __construct()
+    public function __construct(User $author)
     {
         $this->pictures = new \Doctrine\Common\Collections\ArrayCollection();
         $this->category = new \Doctrine\Common\Collections\ArrayCollection();
         $this->setCreatedAt(new \DateTime());
         $this->setUpdatedAt(new \DateTime());
         $this->setClosed(false);
+        $this->setAuthor($author);
     }
 
 
@@ -348,5 +357,29 @@ class ad
     public function getAnswers()
     {
         return $this->answers;
+    }
+
+    /**
+     * Set author
+     *
+     * @param \Annonces\UserBundle\Entity\User $author
+     *
+     * @return ad
+     */
+    public function setAuthor(\Annonces\UserBundle\Entity\User $author = null)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return \Annonces\UserBundle\Entity\User
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 }

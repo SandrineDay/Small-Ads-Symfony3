@@ -6,6 +6,7 @@ use Annonces\MainBundle\Entity\ad;
 use Annonces\MainBundle\Entity\answer;
 use Annonces\MainBundle\Entity\category;
 use Annonces\MainBundle\Entity\picture;
+use Annonces\UserBundle\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -17,6 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Annonces\MainBundle\Form\FormHandler;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class DefaultController extends Controller
 {
@@ -40,7 +42,6 @@ class DefaultController extends Controller
         $annonces = $this->get('doctrine')->getRepository("AnnoncesMainBundle:ad")->findAllAnnoncesByCateg($category);
         $datas = ['annonces'=>$annonces,'categories'=>$categories];
         return $this->render('AnnoncesMainBundle:Default:index.html.twig', $datas);
-//        return $this->render('AnnoncesMainBundle:Default:indexcateg.html.twig', $datas);
     }
 
     public function detailsAction(ad $ad, Request $request){
@@ -173,9 +174,25 @@ class DefaultController extends Controller
         return $this->render('@AnnoncesMain/Default/details.html.twig',$datas);
     }
 
+
     public function espacepersoAction(){
-        return $this->render('AnnoncesMainBundle:Default:espaceperso.html.twig');
+        $connectedUser = $this->getUser()->getId();
+        //        requête DQL pour filtrer les annonces d'un auteur
+        $ads = $this->get('doctrine')->getRepository("AnnoncesMainBundle:ad")->findAllAnnoncesByAuthor($connectedUser);
+        $datas = ['ads'=>$ads,'author'=>$connectedUser];
+        return $this->render('AnnoncesMainBundle:Default:espaceperso.html.twig', $datas);
     }
+//    /**
+//     * @Template("AnnoncesMainBundle:Default:espaceperso.html.twig")
+//     * @param User $author
+//     * @return array
+//     */
+//    public function listAdsByAuthorAction(User $id){
+//        //        requête DQL pour filtrer les annonces d'un auteur
+//        $ads = $this->get('doctrine')->getRepository("AnnoncesMainBundle:ad")->findAllAnnoncesByAuthor($id);
+//        $datas = ['ads'=>$ads,'author'=>$id];
+//        return $datas;
+//    }
 
     private function checkAuthorization($instance){
         // Return true si le user est admin

@@ -2,6 +2,7 @@
 
 namespace Annonces\UserBundle\EventListener;
 
+use Annonces\UserBundle\Entity\User;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\UserEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
